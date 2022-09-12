@@ -1,15 +1,14 @@
-import requests, dotenv, os, pars_main
+import requests
+import pars_main
+import constants
 
-dotenv.load_dotenv()
-API = os.getenv('API') # Token API
-URL = f'https://api.telegram.org/bot{API}/'
 last_update_id = 0 # Прошлое сообщение
 last_pars = '' # Прошлый анекдот
 
 
 def get_updates():
     '''json полученного ботом сообщения'''
-    url = URL + 'getUpdates'
+    url = constants.TG_API_URL + 'getUpdates'
     r = requests.get(url)
     return r.json()
 
@@ -33,7 +32,7 @@ def get_message():
 
 def send_message(chat_id, text='Подождите секундочку, пожалуйста ...'):
     '''Отправка сообщения'''
-    url = URL + f'sendMessage?chat_id={chat_id}&text={text}'
+    url = constants.TG_API_URL + f'sendMessage?chat_id={chat_id}&text={text}'
     requests.get(url)
 
 
