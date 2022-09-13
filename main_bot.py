@@ -8,7 +8,7 @@ last_pars = '' # Прошлый анекдот
 
 def get_updates():
     '''json полученного ботом сообщения'''
-    url = constants.TG_API_URL + 'getUpdates'
+    url = f'{constants.TG_API_URL}getUpdates'
     r = requests.get(url)
     return r.json()
 
@@ -32,7 +32,7 @@ def get_message():
 
 def send_message(chat_id, text='Подождите секундочку, пожалуйста ...'):
     '''Отправка сообщения'''
-    url = constants.TG_API_URL + f'sendMessage?chat_id={chat_id}&text={text}'
+    url = f'{constants.TG_API_URL}sendMessage?chat_id={chat_id}&text={text}'
     requests.get(url)
 
 
