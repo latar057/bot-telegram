@@ -37,6 +37,13 @@ def send_message(chat_id, text='Подождите секундочку, пож�
 
 
 def main():
+    answer = get_message()
+    chat_id = answer['chat_id']
+    text = answer['message_text']
+
+    if text == '/start':
+        send_message(chat_id, 'Введите "j", чтобы получить анекдот.')
+        
     while True:
         answer = get_message()
 
@@ -57,11 +64,4 @@ def main():
 
 
 if __name__ == '__main__':
-    answer = get_message()
-    chat_id = answer['chat_id']
-    text = answer['message_text']
-
-    if text == '/start':
-        send_message(chat_id, 'Введите "j", чтобы получить анекдот.')
-
     main()
